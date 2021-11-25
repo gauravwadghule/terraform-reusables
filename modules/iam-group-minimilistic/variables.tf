@@ -28,3 +28,9 @@ variable "iam_policy" {
   description = "Iam policy JSON"
   default     = {}
 }
+
+variable "group_policy_name" {
+  type        = string
+  description = "Desired name of the group policy name"
+  default     = null
+}
