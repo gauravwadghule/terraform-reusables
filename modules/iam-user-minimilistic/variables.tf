@@ -32,3 +32,9 @@ variable "tags" {
   description = "All tags are specified in this variable as key and value pair."
   default     = {}
 }
+
+variable "groups" {
+  description = "List of IAM user groups this user should belong to in the account"
+  type        = list(string)
+  default     = []
+}
