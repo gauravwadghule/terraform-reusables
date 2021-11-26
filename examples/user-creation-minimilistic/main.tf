@@ -5,5 +5,5 @@ provider "aws" {
 module "user" {
   source    = "../../modules/iam-user-minimilistic"
   user_name = "test_user"
-  groups    = ["group1", "group2"]
+  groups    = ["test_group"]
 }
