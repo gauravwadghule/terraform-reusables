@@ -7,6 +7,10 @@ variable "login_profile_enabled" {
 variable "user_name" {
   type        = string
   description = "Desired name for the IAM user. We recommend using email addresses."
+  validation {
+    condition     = can(regex("(@invesco.com)$", var.user_name))
+    error_message = "Username must be an valid invesco email.(test@invesco.com)"
+  }
 }
 
 variable "path" {

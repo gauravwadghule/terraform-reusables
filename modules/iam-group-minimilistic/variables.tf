@@ -25,6 +25,17 @@ variable "iam_policy" {
     }))
   })
   description = "IAM policy JSON"
+  validation {
+    condition     = can(regex("^(2012-10-17|2008-10-17)$", var.iam_policy.Version))
+    error_message = "IAM Policy Version should be valid."
+  }
+
+  validation {
+    condition     = alltrue([
+      for statement in var.iam_policy.Statement : can(regex("^(Allow|Deny)$", statement.Effect))
+    ])
+    error_message = "IAM Policy Effect should be valid (Allow|Deny)."
+  }
 }
 
 variable "group_policy_name" {
