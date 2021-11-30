@@ -1,6 +1,3 @@
-terraform {
-  experiments = [module_variable_optional_attrs]
-}
 
 resource "aws_iam_group" "default" {
   name = var.group_name

@@ -16,17 +16,15 @@ variable "path" {
 }
 
 variable "iam_policy" {
-  # type = object({
-  #   Version = string
-  #   Statement = list(object({
-  #     Action   = list(string)
-  #     Effect   = string
-  #     Resource = optional(string)
-  #   }))
-  # })
-  type = any
-  description = "Iam policy JSON"
-  default     = {}
+  type = object({
+    Version = string
+    Statement = list(object({
+      Action   = list(string)
+      Effect   = string
+      Resource = string
+    }))
+  })
+  description = "IAM policy JSON"
 }
 
 variable "group_policy_name" {
