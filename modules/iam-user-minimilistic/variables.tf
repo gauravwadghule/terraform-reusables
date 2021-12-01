@@ -13,12 +13,20 @@ variable "path" {
   type        = string
   description = "Desired path for the IAM user"
   default     = "/"
+  validation {
+    condition     = can(regex("^(/)", var.path))
+    error_message = "Path must be valid it must start with forward slash(/)."
+  }
 }
 
 variable "permissions_boundary" {
   type        = string
   description = "The ARN of the policy that is used to set the permissions boundary for the user"
   default     = ""
+  validation {
+    condition     = can(regex("^arn:aws:iam::[[:digit:]]{12}:policy/.+", var.permissions_boundary))
+    error_message = "The ARN of the policy must be a valid."
+  }
 }
 
 variable "force_destroy" {
